@@ -14,14 +14,14 @@ class CreatePlannedTable extends Migration
     public function up()
     {
         Schema::create('planned', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('title');
             $table->float('amount');
             $table->morphs('object');
             $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
