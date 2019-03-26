@@ -19,9 +19,9 @@ class CreatePlannedTable extends Migration
             $table->float('amount');
             $table->morphs('object');
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
-
+            
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
